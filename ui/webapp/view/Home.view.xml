@@ -1,0 +1,64 @@
+<mvc:View
+	controllerName="sap.ui.demo.basicTemplate.controller.Home"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core">
+	<Page
+		id="page"
+		title="{i18n>title}"
+		enableScrolling="false">
+		<content>
+			<List
+				id="ProductList"
+				items="{local>/emojiCollection/}"
+				includeItemInSelection="true">
+				<headerToolbar>
+					<OverflowToolbar>
+						<content>
+							<ProgressIndicator height="0.5rem" percentValue="{local>/timer}" showValue="false" state="Information" displayOnly="true"
+								width="60%" class="sapUiSizeCondensed"/>
+							<ToolbarSpacer/>
+							<Title wrapping="false" class="sapUiSmallMarginEnd" tooltip="{local>/myAccount}"
+								text="${path: 'local>/myBalance', formatter: '.formatter.numberUnit'}"/>
+						</content>
+					</OverflowToolbar>
+				</headerToolbar>
+				<CustomListItem>
+					<FlexBox alignItems="Start" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
+						<items>
+							<core:Icon
+								src="{local>iconUrl}"
+								size="2rem"
+								class="sapUiTinyMarginTop">
+								<core:layoutData>
+									<FlexItemData growFactor="1"/>
+								</core:layoutData>
+							</core:Icon>
+							<HBox class="sapUiSmallMarginTop">
+								<Label text="${path: 'local>emojiPrice', formatter: '.formatter.numberUnit'}" design="Bold"/>
+								<layoutData>
+									<FlexItemData growFactor="2"/>
+								</layoutData>
+							</HBox>
+							<HBox>
+								<Button text="Buy" press="onBuy" class="sapUiLargeMarginEnd"/>
+								<Button text="Sell" press="onSell"/>
+								<layoutData>
+									<FlexItemData growFactor="2"/>
+								</layoutData>
+							</HBox>
+							<HBox>
+								<Label text="{local>emojiCount}" class="sapUiSmallMarginTop"/>
+								<layoutData>
+									<FlexItemData growFactor="1"/>
+								</layoutData>
+							</HBox>
+						</items>
+					</FlexBox>
+				</CustomListItem>
+			</List>
+		</content>
+	</Page>
+</mvc:View>

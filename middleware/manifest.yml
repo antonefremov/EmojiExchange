@@ -1,0 +1,6 @@
+---
+applications:
+- name: fiowallet
+  path: .
+  buildpack: nodejs_buildpack
+  memory: 256M
